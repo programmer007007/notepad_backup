@@ -15,13 +15,12 @@ def backup_notepad_files():
         notepad = app.window(handle=window)
         notepad_files.append(notepad)
 
-    # Backup each file to the specified directory
+    
     for notepad in notepad_files:
         file_name = os.path.basename(notepad.texts()[0])
         edit = notepad.child_window(class_name='Edit')
         file_contents = edit.window_text()
-        date_string = datetime.datetime.now().strftime("%Y-%m-%d")
-        #backup_file_path = os.path.join(backup_dir, file_name)
+        date_string = datetime.datetime.now().strftime("%Y-%m-%d")        
         backup_filename = f"{backup_dir}\\{date_string}_{file_name.replace(' ', '_').replace('-', '_').replace('*','')}.bak"
         if file_contents.strip() != "":
             with open(backup_filename, "a") as backup_file:                
@@ -33,6 +32,5 @@ def backup_notepad_files():
 if __name__ == "__main__":
     while True:
         backup_notepad_files()
-        print("Backed up. Now Sleeping for 10 minutes")
-        # sleep for 10 minutes
+        print("Backed up. Now Sleeping for 10 minutes")        
         time.sleep(600)
