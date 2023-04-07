@@ -2,6 +2,9 @@
 
 This script bascially run in the background and keeps a watch at your unsaved notepad files and keeps on backing it up in the folder specified.
 
+Requirement : 
+pip install pywinauto
+
 To make the script run automatically on every startup in Windows, you can create a shortcut to the script and then add it to the startup folder. Here are the steps:
 
 Create a shortcut to the Python script by right-clicking on the script file and selecting "Create shortcut".
