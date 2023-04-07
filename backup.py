@@ -2,7 +2,7 @@ import os
 import shutil
 import pywinauto
 import datetime
-
+import time
 # Specify the directory to backup the files to
 backup_dir = "C:\\NotepadBackup"
 
@@ -20,16 +20,19 @@ def backup_notepad_files():
         file_name = os.path.basename(notepad.texts()[0])
         edit = notepad.child_window(class_name='Edit')
         file_contents = edit.window_text()
-        current_date = datetime.datetime.now().strftime("%Y-%m-%d")
-        file_name = current_date + "_" + file_name+".bak"
-        backup_file_path = os.path.join(backup_dir, file_name)
-        with open(backup_file_path, "a") as backup_file:
-            backup_file.write(file_contents)
-            backup_file.write("=================================")
-            backup_file.write("\n\n\n\n\n")
+        date_string = datetime.datetime.now().strftime("%Y-%m-%d")
+        #backup_file_path = os.path.join(backup_dir, file_name)
+        backup_filename = f"{backup_dir}\\{date_string}_{file_name.replace(' ', '_').replace('-', '_').replace('*','')}.bak"
+        if file_contents.strip() != "":
+            with open(backup_filename, "a") as backup_file:                
+                backup_file.write(file_contents)
+                backup_file.write("=================================")
+                backup_file.write("\n\n\n\n\n")
 
 
 if __name__ == "__main__":
     while True:
-        os.system("timeout 10")
         backup_notepad_files()
+        print("Backed up. Now Sleeping for 10 minutes")
+        # sleep for 10 minutes
+        time.sleep(600)
