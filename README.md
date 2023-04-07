@@ -8,7 +8,7 @@ Create a shortcut to the Python script by right-clicking on the script file and 
 Right-click on the shortcut and select "Properties".
 
 
-In the "Target" field, add python followed by the path to the script file. For example, if your script file is located at C:\Users\Username\Documents\backup.py, the target field should look like: python C:\Users\Username\Documents\backup.py.
+In the "Target" field, add python followed by the path to the script file. For example, if your script file is located at C:\Users\Username\Documents\backup.py, the target field should look like: pythonw C:\Users\Username\Documents\backup.py.
 
 Click "Apply" and then "OK" to save the changes.
 
